@@ -26,6 +26,7 @@ public class DBHelper {
 			e.printStackTrace();
 		}
 	}
+	
 	public static ResultSet getRs (String sql,Object...obj) {
 		Connection cn=null;
 		PreparedStatement ps = null;
@@ -41,8 +42,6 @@ public class DBHelper {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 		return null;
 	}
 }

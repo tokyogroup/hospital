@@ -21,7 +21,7 @@
   <form name="form1" method="post" action="">
     <table width="95%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="90" height="24" class="td_form01">病人姓名</td>
+        <td width="90" height="24" class="td_form01">就诊卡号</td>
         <td class="td_form02"><input name="textfield24" type="text" class="input"></td>
          <td width="90" class="td_form01">病人性别</td>
         <td class="td_form02"><select name="select3">
@@ -39,12 +39,16 @@
         </select></td>
       
         <td width="90" height="24" class="td_form01">挂号日期</td>
-        <td class="td_form02"><input name="textfield24" type="text" class="input"></td>
+        <td class="td_form02"><input name="textfield24" type="text" class="input">
+        </td>
         </tr>
       
      
         <td width="90" height="24" class="td_form01">挂号类型</td>
-        <td class="td_form02"><input name="textfield24" type="text" class="input"></td>
+        <td class="td_form02"><select name="select3">
+              <option>急诊</option>
+              <option>普通门诊</option>
+              <option>专家门诊</option></td>
            <td width="90" height="24" class="td_form01">挂号费用</td>
         <td class="td_form02"><input name="textfield24" type="text" class="input"></td>
       </tr>
