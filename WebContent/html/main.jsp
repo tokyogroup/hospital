@@ -200,7 +200,7 @@
               <td background="../images/main_70.gif"><img src="../images/spacer.gif" width="1" height="1"></td>
               <td class="td06"><table width="100%" border="0" cellspacing="4" cellpadding="0">
                   <tr>
-                    <td>杨国春先生 你好！<br>
+                    <td>${userinfos.u_name} 你好！<br>
                      欢迎登录北京天桥医院门诊管理系统<br>
                       <br>
                      上次登录时间为：<br>

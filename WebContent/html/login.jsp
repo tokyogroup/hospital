@@ -39,7 +39,7 @@ function changeVerifyCode(){
 </head>
 
 <body>
-<form action="../login.do?opt=login" method="post" name="LoginForm">
+<form action="UserinfosServlet?method=login" method="post" name="LoginForm">
 <table width="100%"  height="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td bgcolor="#1075b1">&nbsp;</td>
@@ -67,12 +67,7 @@ function changeVerifyCode(){
                 <td width="10" valign="bottom">&nbsp;</td>
                 <td height="24" colspan="2" valign="bottom"><input type="password" name="u_pwd" id="textfield2" style="width:100px; height:17px; background-color:#87adbf; border:solid 1px #153966; font-size:12px; color:#283439; "></td>
               </tr>
-              <tr>
-                <td height="24" valign="bottom"><div align="right"><span class="STYLE3">验证码</span></div></td>
-                <td width="10" valign="bottom">&nbsp;</td>
-                <td width="52" height="24" valign="bottom"><input type="text" name="u_code" id="textfield3" style="width:50px; height:17px; background-color:#87adbf; border:solid 1px #153966; font-size:12px; color:#283439; "></td>
-                <td width="62" valign="bottom"><div align="left"><img name="verifyCodeImg" src="../vc.do" onClick="changeVerifyCode()" width="50" height="20"></img></div></td>
-              </tr>
+              
               <tr></tr>
             </table></td>
             <td width="26"><img src="images/login_08.gif" width="26" height="84"></td>

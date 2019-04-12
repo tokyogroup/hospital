@@ -45,4 +45,25 @@ public class DBHelper {
 		
 		return null;
 	}
+	public static boolean runSql (String sql,Object...obj) {
+		Connection cn=null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			cn=getConn();
+			ps=cn.prepareStatement(sql);
+			for (int i = 0; i < obj.length; i++) {
+				ps.setObject(i+1, obj[i]);
+			}
+			int num =ps.executeUpdate();
+			if(num>0) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return false;
+	}
 }
