@@ -204,8 +204,8 @@
                      欢迎登录北京天桥医院门诊管理系统<br>
                       <br>
                      上次登录时间为：<br>
-                      <span class="F01">2015-1-8 19:52:35</span><br>
-                      这是您第1次登录本系统</td>
+                      <span class="F01">${lastLoginTime}</span><br>
+                    
                   </tr>
               </table></td>
               <td background="../images/main_72.gif"><img src="../images/spacer.gif" width="1" height="1"></td>

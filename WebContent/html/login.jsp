@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -67,7 +68,20 @@ function changeVerifyCode(){
                 <td width="10" valign="bottom">&nbsp;</td>
                 <td height="24" colspan="2" valign="bottom"><input type="password" name="u_pwd" id="textfield2" style="width:100px; height:17px; background-color:#87adbf; border:solid 1px #153966; font-size:12px; color:#283439; "></td>
               </tr>
-              
+              			<c:choose>
+	<c:when test="${empty wrong}">
+	</c:when>
+	<c:otherwise>
+    <tr>
+                <td height="24" valign="bottom"><div align="right"><span class="STYLE3"></span></div></td>
+                <td width="10" valign="bottom">&nbsp;</td>
+                <td width="62" height="24" valign="bottom"><input type="text"   value="${wrong }" name="u_code" id="textfield3" style="width:100px; height:17px; background-color:#87adbf; border:solid 1px #153966; font-size:12px; color:#ff0000; "></td>
+                </div></td>
+              </tr>
+	</c:otherwise>
+	</c:choose>
+             
+
               <tr></tr>
             </table></td>
             <td width="26"><img src="images/login_08.gif" width="26" height="84"></td>
