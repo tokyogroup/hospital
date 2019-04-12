@@ -95,7 +95,7 @@
 				<div>
 					<a class="one">用户管理</a>
 					<ul class="kid">
-						<li><b class="tip"></b><a href="User/users.jsp"
+						<li><b class="tip"></b><a href="UserinfosServlet?method=userFindAll"
 							target="mainFrame" class="a03">用户操作</a>
 						</li>
 						<li><b class="tip"></b><a href="Publish/publishannounce.jsp"

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户操作</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/check.js"></script>
 <script language="javascript" src="../../js/checkAll.js"></script>
 <script language="javascript" src="../../js/clientSideApp.js"></script>
@@ -44,29 +45,42 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
   <tr>
-    <td class="td_top">选中</td>
-    <td class="td_top">登录名</td>
+    <td class="td_top">用户id</td>
     <td class="td_top">用户姓名</td>
+    <td class="td_top">用户性别</td>
+    <td class="td_top">用户年龄</td>
+    <td class="td_top">所在科室</td>
+    <td class="td_top">用户邮箱</td>
     <td class="td_top">操作</td>
    
    
 
   </tr>
-  <tr>
-    <td class="td07"> <input type="checkbox"  name="selectoper" value="${xml.code }" checked="checked">    </td>
-    <td class="td07">zs</td>
-    <td class="td07">张三</td>
-    <td class="td07"><a href="#">删除</a>&nbsp&nbsp;<a href="userModify.jsp">修改</a></td>
+  <c:forEach var="user" items="${userList }">
+  
+    <tr>
+    <td class="td07">${user.u_id}</td>
+    <td class="td07">${user.u_name}</td>
+    <td class="td07">${user.u_sex}</td>
+    <td class="td07">${user.u_age}</td>
+    <td class="td07">${user.section.s_name}</td>
+    <td class="td07">${user.u_email}</td>
+    <td class="td07"><a href="#">删除</a>&nbsp&nbsp;<a href="UserinfosServlet?method=updatePwd1&u_id=${user.u_id}">修改</a></td>
    
 
 
-  </tr>  
+  </tr> 
+  
+  </c:forEach>
+  
+  
+ 
 </table>
       &nbsp&nbsp&nbsp&nbsp;
  <table align="center">
        <tr>
         <td >
-          <input name=save  type=button class=buttonface value= '  提交  '  onclick="   ">        
+        
         
       </tr>
    </table>

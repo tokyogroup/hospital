@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.azeroth.bean.Section;
 import com.azeroth.bean.Userinfos;
 import com.azeroth.dao.UserinfosDao;
 import com.azeroth.utils.DBHelper;
@@ -85,7 +86,7 @@ public class UserinfosDaoimpl implements UserinfosDao {
 	@Override
 	public List<Userinfos> userFindAll() {
 		try {
-			String sql = "select * from t_userinfos";
+			String sql = "select * from t_userinfos u left join t_section s on u.s_id=s.s_id";
 			Object[] obj = {};
 			ResultSet rs = DBHelper.getRs(sql, obj);
 			List<Userinfos> userList = new ArrayList<Userinfos>();
@@ -102,7 +103,13 @@ public class UserinfosDaoimpl implements UserinfosDao {
 				int u_taskstate = rs.getInt("u_taskstate");
 				String u_email = rs.getString("u_email");
 				String u_exp = rs.getString("u_exp");
+				String s_name = rs.getString("s_name");
+				String s_addr = rs.getString("s_addr");
+				Section section = new Section();
+				section.setS_addr(s_addr);
+				section.setS_name(s_name);
 				Userinfos userinfos = new Userinfos(u_id,s_id,pr_id,u_pwd,u_name,u_title,u_age,u_sex,u_tel,u_taskstate,u_email,u_exp);
+				userinfos.setSection(section);
 				userList.add(userinfos);
 			}
 			return userList;

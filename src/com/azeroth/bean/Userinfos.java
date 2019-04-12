@@ -12,6 +12,13 @@ public class Userinfos {
 	private String u_tel;//	varchar(50)
 	private int u_taskstate;//	int(11)
 	private String u_email;//	varchar(100)
+	private Section section;
+	public Section getSection() {
+		return section;
+	}
+	public void setSection(Section section) {
+		this.section = section;
+	}
 	public Userinfos() {
 		super();
 		// TODO Auto-generated constructor stub
