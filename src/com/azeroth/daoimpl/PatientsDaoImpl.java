@@ -1,4 +1,4 @@
-package com.azeroth.daoImpl;
+package com.azeroth.daoimpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,24 +6,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
 import com.azeroth.bean.Patients;
 import com.azeroth.dao.PatientsDao;
-import com.azeroth.util.DBUtil;
+import com.azeroth.utils.DBHelper;
+import com.azeroth.utils.UUIDUtil;
 
 public class PatientsDaoImpl implements PatientsDao{
 	//增加病人信息
 	public void  addPatient(Patients pa) {
-		Connection conn = DBUtil.getConn();
+		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
 		String sql = "insert into t_patients(pi_id,pi_name,pi_sex,pi_age) values (?,?,?,?)";
 		
 		try {
 			//执行sql语句
 			ps = conn.prepareStatement(sql);
-			//生成唯一编号
-			ps.setString(1, UUID.randomUUID().toString());
+			//生成短uuid
+			UUIDUtil uuid = new UUIDUtil();
+			String id=uuid.getId();
+			ps.setString(1, "PA"+id);
 			ps.setString(2, pa.getPi_name());
 			ps.setString(3, pa.getPi_sex());
 			ps.setInt(4, pa.getPi_age());
@@ -38,7 +39,7 @@ public class PatientsDaoImpl implements PatientsDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			DBUtil.getClose(conn, ps, null);
+			DBHelper.closeConn(conn, ps, null);
 		}
 		
 	}
@@ -52,7 +53,7 @@ public class PatientsDaoImpl implements PatientsDao{
 				String sql = "delete from t_patients where pi_name = ?";
 				//2、实例化两个接口
 				try {
-					conn = DBUtil.getConn();
+					conn = DBHelper.getConn();
 					//3、执行sql语句
 					ps = conn.prepareStatement(sql);
 					ps.setString(1, name);
@@ -77,7 +78,7 @@ public class PatientsDaoImpl implements PatientsDao{
 
 				//2、实例化两个接口
 				try {
-					conn = DBUtil.getConn();
+					conn = DBHelper.getConn();
 					//执行sql语句
 					ps = conn.prepareStatement("update t_patients set pi_sex = ?,pi_age = ? where pi_name = ?");
 					ps.setString(1, pa.getPi_sex());
@@ -107,7 +108,7 @@ public class PatientsDaoImpl implements PatientsDao{
 		
 		
 		try {
-			conn = DBUtil.getConn();
+			conn = DBHelper.getConn();
 			ps = conn.prepareStatement(sql);
 			rs=ps.executeQuery();
 			while(rs.next()) {
@@ -122,7 +123,7 @@ public class PatientsDaoImpl implements PatientsDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBUtil.getClose(conn, ps, rs);
+			DBHelper.closeConn(conn, ps, rs);
 		}
 		
 		return pList;
@@ -137,7 +138,7 @@ public class PatientsDaoImpl implements PatientsDao{
 		ResultSet rs = null;
 		
 		try {
-			conn = DBUtil.getConn();
+			conn = DBHelper.getConn();
 			ps = conn.prepareStatement(sql);
 			//向问号传递"%"+name+"%"
 			ps.setString(1, "%"+name+"%");
@@ -155,9 +156,41 @@ public class PatientsDaoImpl implements PatientsDao{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			DBUtil.getClose(conn, ps, rs);
+			DBHelper.closeConn(conn, ps, rs);
 		}
 		return pList;
 	}
+	
+	//根据卡号模糊查询
+		public List<Patients> findById(String id) {
+			List<Patients> pList = new ArrayList<Patients>();
+			String sql = "select * from t_patients where pi_id = ?";
+			Connection conn = null;
+			PreparedStatement ps = null;
+			ResultSet rs = null;
+			
+			try {
+				conn = DBHelper.getConn();
+				ps = conn.prepareStatement(sql);
+				//向问号传值
+				ps.setString(1, id);
+				rs=ps.executeQuery();
+				
+				while(rs.next()) {
+					String pid=rs.getString("pi_id");
+					String pname=rs.getString("pi_name");
+					String psex=rs.getString("pi_sex");
+					int page=rs.getInt("pi_age");
+					Patients patients = new Patients(pid,pname,psex,page);
+					pList.add(patients);
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				DBHelper.closeConn(conn, ps, rs);
+			}
+			return pList;
+		}
 
 }
