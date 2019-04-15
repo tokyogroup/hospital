@@ -11,5 +11,6 @@ public interface PatientsDao {
 	void  modPatient(Patients pa);
 	List<Patients> findAll();
 	List<Patients> findByName(String pi_name);
+	List<Patients> findById(String pi_id);
 	
 }
