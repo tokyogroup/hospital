@@ -160,37 +160,42 @@ public class PatientsDaoImpl implements PatientsDao{
 		}
 		return pList;
 	}
-	
-	//根据卡号模糊查询
-		public List<Patients> findById(String id) {
-			List<Patients> pList = new ArrayList<Patients>();
-			String sql = "select * from t_patients where pi_id = ?";
-			Connection conn = null;
-			PreparedStatement ps = null;
-			ResultSet rs = null;
-			
-			try {
-				conn = DBHelper.getConn();
-				ps = conn.prepareStatement(sql);
-				//向问号传值
-				ps.setString(1, id);
-				rs=ps.executeQuery();
-				
-				while(rs.next()) {
-					String pid=rs.getString("pi_id");
-					String pname=rs.getString("pi_name");
-					String psex=rs.getString("pi_sex");
-					int page=rs.getInt("pi_age");
-					Patients patients = new Patients(pid,pname,psex,page);
-					pList.add(patients);
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				DBHelper.closeConn(conn, ps, rs);
-			}
-			return pList;
+
+	//根据卡号查询
+	public Patients findById(String pi_id) {
+		String sql = "select * from t_patients where pi_id = ?";
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+		conn = DBHelper.getConn();
+		ps = conn.prepareStatement(sql);
+		//向问号传传值
+		ps.setString(1, pi_id);
+		rs=ps.executeQuery();
+		
+		if(rs.next()) {
+			String pid=rs.getString("pi_id");
+			String pname=rs.getString("pi_name");
+			String psex=rs.getString("pi_sex");
+			int page=rs.getInt("pi_age");
+			Patients patients = new Patients(pid,pname,psex,page);
+			return patients;
 		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		DBHelper.closeConn(conn, ps, rs);
+	}
+		return null;
+	}
+
+	
+	
+	
+	
+	
 
 }
