@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>信息咨询</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/clientSideApp.js"></script>
 <SCRIPT language=JavaScript type=text/JavaScript>
 function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left) 
@@ -37,11 +37,11 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 
   <tr> 
 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="doctorInfo.jsp" target="mainFrame" class="a14">医生信息查询</a></td>
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="../UserinfosServlet?method=userFindDoctor" target="mainFrame" class="a14">医生信息查询</a></td>
   </tr>
   <tr> 
 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="medicalInfo2.jsp" target="mainFrame" class="a14">药品信息查询</a></td>
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="../MedicineServlet?method=medicineFindAll" target="mainFrame" class="a14">药品信息查询</a></td>
   </tr>
  
 </table>

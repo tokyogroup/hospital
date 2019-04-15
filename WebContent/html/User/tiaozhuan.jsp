@@ -18,6 +18,6 @@
 
 </head>
 <body>
-  密码修改成功 正在跳转中~~~
+${tiaozhuan}
 </body>
 </html>

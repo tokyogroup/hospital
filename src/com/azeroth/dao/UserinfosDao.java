@@ -17,6 +17,7 @@ public interface UserinfosDao {
 	Userinfos userFindByUid(String u_id);//查询个人信息
 	boolean userUpPwd(String u_id,String u_pwd);//修改密码
 	List<Userinfos> userFindDoctor();//查询所有医生
+	List<Userinfos> userFindByUname(String u_name);//根据名字模糊查询个人信息
 	
 	
 	

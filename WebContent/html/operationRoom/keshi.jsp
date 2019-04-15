@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>查询科室信息</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/check.js"></script>
 <script language="javascript" src="../../js/checkAll.js"></script>
 <script language="javascript" src="../../js/clientSideApp.js"></script>
@@ -34,13 +35,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 </table>
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="td_page">输入科室编号：
-    <input name="PARA_YM_NOW" size="10" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW')"> -->
-科室名称：<input name="PARA_YM_NOW2" size="10" type="text" class="input"   id="PARA_YM_NOW2" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
 
-<input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
-  </tr>
 </table>
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
@@ -48,22 +43,26 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td_top">科室编号</td>
     <td class="td_top">科室名称</td>
     <td class="td_top">科室地址</td>
-    <td class="td_top">科室简介</td>
+    
     <td class="td_top">操作</td>
   
    
 
   </tr>
-  <tr>
-    <td class="td07">1103</td>
-    <td class="td07">妇科</td>
-    <td class="td07">天桥医院二楼201号</td>
-    <td class="td07">天桥医院二楼201号</td>
-    <td class="td07"><a href="">修改</a></td>
+   <c:forEach var="section" items="${secitonList}">
+  
+    <tr>
+    <td class="td07">${section.s_id}</td>
+    <td class="td07">${section.s_name}</td>
+    <td class="td07">${section.s_addr}</td>
+    <td class="td07"><a href="SectionServlet?method=sectionUpdatePwd&s_id=${section.s_id}">修改</a></td>
+   
 
 
-
-  </tr>
+  </tr> 
+  
+  </c:forEach>
+ 
 
   
 </table>

@@ -75,6 +75,8 @@ public class UserinfosServlet extends BaseServlet {
 		ss.removeAttribute("userinfos");
 		return "./login.jsp";
 	}
+	
+	
 	//查看所有信息
 	public String userFindAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		System.out.println("==========userFindAll==========");
@@ -82,11 +84,14 @@ public class UserinfosServlet extends BaseServlet {
 		request.getSession().setAttribute("userList", userList);
 		return "User/users.jsp";
 	}
+	
+	
 	//修改密码1 储存uid 跳转修改密码界面
 	public String updatePwd1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 	
 		String u_id = request.getParameter("u_id");
 		request.getSession().setAttribute("u_id", u_id);
+		
 		
 			return "User/userModify.jsp";
 		
@@ -104,10 +109,81 @@ public class UserinfosServlet extends BaseServlet {
 		}else {
 			String u_pwd = request.getParameter("newPwd");
 			userinfosDao.userUpPwd(u_id, u_pwd);
+			request.getSession().setAttribute("tiaozhuan", "密码修改成功 正在跳转中~~~");
 			return "User/tiaozhuan.jsp";
 		}
 		
 	}
+	
+	//用户删除
+	public String userDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		System.out.println("==========userDelete==========");
+		String u_id = request.getParameter("u_id");
+		
+			userinfosDao.userDelete(u_id);
+			request.getSession().setAttribute("tiaozhuan", "删除成功 正在跳转中~~~");
+			return "User/tiaozhuan.jsp";
+		
+		
+	}
+	//根据名字模糊查询用户信息
+	public String userFindByUname(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("utf-8");
+		System.out.println("==========userFindByUname==========");
+		
+		String u_name = request.getParameter("u_name");
+		System.out.println(u_name);
+		
+		List<Userinfos> userList = userinfosDao.userFindByUname(u_name);
+		request.getSession().setAttribute("userList", userList);
+
+		
+		return "User/users.jsp";
+		
+		
+	}
+	//查看所有医生信息
+	public String userFindDoctor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("utf-8");
+		System.out.println("==========userFindDoctor==========");
+	
+		List<Userinfos> doctorList = userinfosDao.userFindDoctor();
+		request.getSession().setAttribute("doctorList", doctorList);
+
+		
+		return "Guahao/doctorInfo.jsp";
+		
+		
+	}
+	//模糊查询医生信息
+	public String doctorFind(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("utf-8");
+		System.out.println("==========doctorFind==========");
+		
+		String u_name = request.getParameter("u_name");
+		System.out.println(u_name);
+		
+		List<Userinfos> doctorList = userinfosDao.userFindByUname(u_name);
+	
+		request.getSession().setAttribute("doctorList", doctorList);
+
+		
+		return "Guahao/doctorInfo.jsp";
+		
+		
+	}
+	
+	//加载科室信息
+	public String userAdd1(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		request.setCharacterEncoding("utf-8");
+		System.out.println("==========userAdd1==========");
+		
+		
+		
+		return null;
+		
+	}
+	
 	
 	
 }

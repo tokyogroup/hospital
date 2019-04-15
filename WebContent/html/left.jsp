@@ -32,7 +32,7 @@
 							target="mainFrame" class="a03">挂号服务</a>
 						</li>
 						<li><b class="tip"></b><a
-							href="Guahao/patientInfo.jsp" target="mainFrame"
+							href="PatientsServlet/method=patientsFindAll" target="mainFrame"
 							class="a03">查看病人信息</a>
 						</li>
 						<li><b class="tip"></b><a href="Guahao/message.jsp"
@@ -58,7 +58,7 @@
 					<a class="one">科室管理</a>
 					<ul class="kid">
 						<li><b class="tip"></b><a
-							href="operationRoom/keshi.jsp" target="mainFrame"
+							href="SectionServlet?method=sectionFindAll" target="mainFrame"
 							class="a03">查看科室信息</a>
 						</li>
                         <li><b class="tip"></b><a
@@ -98,12 +98,10 @@
 						<li><b class="tip"></b><a href="UserinfosServlet?method=userFindAll"
 							target="mainFrame" class="a03">用户操作</a>
 						</li>
-						<li><b class="tip"></b><a href="Publish/publishannounce.jsp"
-							target="mainFrame" class="a03">发布公告信息</a>                              
+						<li><b class="tip"></b><a href="User/userAdd.jsp"
+							target="mainFrame" class="a03">添加新用户</a>                              
 						</li>
-                      <li><b class="tip"></b><a href="Publish/announce.jsp"
-							target="mainFrame" class="a03">公布信息的删除/修改</a>
-						</li>
+                    
 							    
 						
 					</ul>

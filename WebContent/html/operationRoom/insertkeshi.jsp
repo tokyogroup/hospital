@@ -63,36 +63,28 @@ cellpadding="0">
       </table></td>
     </tr>
   </table>
-  <form name="form1" method="post" action="">
+  <form name="form1" method="post" action="../SectionServlet?method=sectionAdd">
     <table width=95% border=0 align=center cellpadding=0 cellspacing=0>
       <tr align="left" nowrap>
         <td width="78" height="24" align="center"  class=td_form01>科室名称</td>
-        <td colspan="3" align="left"  class=td_form02><input name="textfield22" type="text" class="input" 
+        <td colspan="3" align="left"  class=td_form02><input name="s_name" type="text" class="input" 
 
 size="45"></td>
 </tr>
 <tr>
         <td width="146" align="center"  class=td_form01>科室地址</td>
-        <td colspan="3" align="left"  class=td_form02><input name="textfield22" type="text" class="input" 
+        <td colspan="3" align="left"  class=td_form02><input name="s_addr" type="text" class="input" 
 
 size="45"></td>
       </tr>
-      <tr align="left" nowrap>
-        <td height="24" align="center"  class=td_form01>科室简介</td>
-        <td colspan="3" align="left"  class=td_form02><input name="textfield22" type="text" class="input" 
-
-size="45"></td>
-</tr>
-    
-    
 
     </table>
     
     <table>
        <tr>
         <td >
-          <input name=save  type=button class=buttonface value= '  提交  '  onclick="   ">        
-        <input name="Submit" type="submit" class="buttonface" value="  重置  " ></td>
+          <input name=save  type=submit class=buttonface value= '  提交  ' >        
+        <input name="Submit" type="button" class="buttonface" value="  重置  " ></td>
       </tr>
    </table>
 

@@ -86,6 +86,7 @@ public class UserinfosDaoimpl implements UserinfosDao {
 	@Override
 	public List<Userinfos> userFindAll() {
 		try {
+			
 			String sql = "select * from t_userinfos u left join t_section s on u.s_id=s.s_id";
 			Object[] obj = {};
 			ResultSet rs = DBHelper.getRs(sql, obj);
@@ -210,7 +211,7 @@ public class UserinfosDaoimpl implements UserinfosDao {
 	public List<Userinfos> userFindDoctor() {
 
 		try {
-			String sql = "select * from t_userinfos where pr_id='pr1'";
+			String sql = "select * from t_userinfos u , t_section s where u.s_id=s.s_id and u.pr_id='pr1'";
 			Object[] obj = {};
 			ResultSet rs = DBHelper.getRs(sql, obj);
 			List<Userinfos> userList = new ArrayList<Userinfos>();
@@ -227,7 +228,13 @@ public class UserinfosDaoimpl implements UserinfosDao {
 				int u_taskstate = rs.getInt("u_taskstate");
 				String u_email = rs.getString("u_email");
 				String u_exp = rs.getString("u_exp");
+				String s_name = rs.getString("s_name");
+				String s_addr = rs.getString("s_addr");
+				Section section = new Section();
+				section.setS_addr(s_addr);
+				section.setS_name(s_name);
 				Userinfos userinfos = new Userinfos(u_id,s_id,pr_id,u_pwd,u_name,u_title,u_age,u_sex,u_tel,u_taskstate,u_email,u_exp);
+				userinfos.setSection(section);
 				userList.add(userinfos);
 			}
 			return userList;
@@ -236,4 +243,44 @@ public class UserinfosDaoimpl implements UserinfosDao {
 		}
 		return null;
 	
-	}}
+	}
+
+	@Override
+	public List<Userinfos> userFindByUname(String u_name) {		
+		try {
+			
+			String sql = "select * from t_userinfos u , t_section s where u.s_id=s.s_id and u.u_name like ?";
+			Object[] obj = {"%"+u_name+"%"};
+			ResultSet rs = DBHelper.getRs(sql, obj);
+			List<Userinfos> userList = new ArrayList<Userinfos>();
+			while(rs.next()) {
+				String u_id = rs.getString("u_id");
+				String u_name1 = rs.getString("u_name");
+				int s_id = rs.getInt("s_id");
+				String pr_id = rs.getString("pr_id");
+				String u_pwd = rs.getString("u_pwd");
+				int u_title = rs.getInt("u_title");
+				int u_age = rs.getInt("u_age");
+				String u_sex = rs.getString("u_sex");
+				String u_tel = rs.getString("u_tel");
+				int u_taskstate = rs.getInt("u_taskstate");
+				String u_email = rs.getString("u_email");
+				String u_exp = rs.getString("u_exp");
+				String s_name = rs.getString("s_name");
+				String s_addr = rs.getString("s_addr");
+				Section section = new Section();
+				section.setS_addr(s_addr);
+				section.setS_name(s_name);
+				Userinfos userinfos = new Userinfos(u_id,s_id,pr_id,u_pwd,u_name1,u_title,u_age,u_sex,u_tel,u_taskstate,u_email,u_exp);
+				userinfos.setSection(section);
+				userList.add(userinfos);
+			}
+			return userList;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	
+	}
+	
+}

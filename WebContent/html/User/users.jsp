@@ -34,12 +34,14 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
+<form action="UserinfosServlet?method=userFindByUname" method="post">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td class="td_page">
-用户名：<input name="PARA_YM_NOW2" size="10" type="text" class="input"   id="PARA_YM_NOW2" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
+用户名：<input name="u_name" size="10" type="text" class="input"   id="PARA_YM_NOW2" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" ><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
 
 <input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
+</form>
   </tr>
 </table>
 <br>
@@ -65,7 +67,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07">${user.u_age}</td>
     <td class="td07">${user.section.s_name}</td>
     <td class="td07">${user.u_email}</td>
-    <td class="td07"><a href="#">删除</a>&nbsp&nbsp;<a href="UserinfosServlet?method=updatePwd1&u_id=${user.u_id}">修改</a></td>
+    <td class="td07"><a href="UserinfosServlet?method=userDelete&u_id=${user.u_id}">删除</a>&nbsp&nbsp;<a href="UserinfosServlet?method=updatePwd1&u_id=${user.u_id}">修改密码</a></td>
    
 
 
