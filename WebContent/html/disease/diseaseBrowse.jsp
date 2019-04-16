@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>       
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,17 +20,23 @@
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
    <tr>
       <td class="td_top">就诊卡号</td>
-      <td class="td_top">病历编号</td>
       <td class="td_top">姓名</td>
+      <td class="td_top">病例编号</td>
+       <td class="td_top">诊断时间</td>
+       <td class="td_top">操作</td>
    </tr>
+   <c:forEach var="case1" items="${case1List}">
    
-   <tr>
-    <td class="td07">1103</td>
-    <td class="td07">309</td>
-    <td class="td07">张三
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;
-    <a href="patientInfo.jsp">详情</a></td>
+    <tr>
+    <td class="td07">${case1.patients.pi_id }</td>
+    <td class="td07">${case1.patients.pi_name }</td>
+    <td class="td07">${case1.c_id}</td>
+    <td class="td07">${case1.c_date}</td>
+    <td class="td07"><a href="patientInfo.jsp">详情</a></td>
   </tr>
+   </c:forEach>
+   
+  
 
 
 

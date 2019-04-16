@@ -35,28 +35,37 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="td_page">输入就诊卡号：
-    <input name="PARA_YM_NOW" size="10" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW')"> -->
-病人姓名：<input name="PARA_YM_NOW2" size="10" type="text" class="input"   id="PARA_YM_NOW2" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
-
+    <td class="td_page">就诊卡号<input name="pi_id" size="10" type="text" class="input">   <!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW')"> -->
+&nbsp;&nbsp;&nbsp;&nbsp;病人姓名：<input name="pi_name" size="10" type="text" class="input"   id="PARA_YM_NOW2" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
+&nbsp;&nbsp;&nbsp;&nbsp;挂号科室：
+<select name="s_id">
+<option>骨科</option><option>脑残科</option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
 <input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
-  </tr>
+</tr>
 </table>
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
   <tr>
     <td class="td_top">就诊卡号</td>
+    <td class="td_top">挂号类型</td>
     <td class="td_top">病人姓名</td>
-    <td class="td_top">挂号日期</td>
+    <td class="td_top">挂号时间</td>
     <td class="td_top">挂号科室</td>
+    <td class="td_top">医生姓名</td>
+    <td class="td_top">挂号状态</td>
     <td nowrap class="td_top">操作</td>
 
   </tr>
   <tr>
     <td class="td07">1103</td>
+    <td class="td07">普通门诊</td>
     <td class="td07">朱佳宝</td>
     <td class="td07">2013-9-10</td>
     <td class="td07">脑残科</td>
+    <td class="td07">张三</td>
+    <td class="td07">等号</td>
     <td class="td07">
         <a href="guahaoEdit.jsp" target="mainFrame">&nbsp;&nbsp;详情</a>
         <a href="guahaoModify.jsp"  target="mainFrame">&nbsp;&nbsp;修改</a>
@@ -64,35 +73,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     </td>
 
   </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
 
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>

@@ -33,7 +33,7 @@
 <form name="form1" method="post" action="">
   <tr>
     <td width="20" height="30">&nbsp;</td>
-    <td class="F02"><img src="../images/index_23.gif" width="26" height="30" align="absmiddle">工作人员，您好! </td>
+    <td class="F02"><img src="../images/index_23.gif" width="26" height="30" align="absmiddle">工作人员:${userinfos.u_name}，您好! </td>
     <td width="14" class="F02"></td>
   </tr>
 </form>

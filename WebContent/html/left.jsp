@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css"
 	href="style/jquery-ui-1.8.22.custom.css" />
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript" type="text/javascript" src="../js/tree.js"></script>
 <script type="text/javascript" src="style/jquery-1.7.2.js"></script>
 <script type="text/javascript"
 	src="style/jquery-ui-1.8.22.custom.min.js"></script>
@@ -32,8 +31,8 @@
 							target="mainFrame" class="a03">挂号服务</a>
 						</li>
 						<li><b class="tip"></b><a
-							href="PatientsServlet/method=patientsFindAll" target="mainFrame"
-							class="a03">查看病人信息</a>
+							href="Guahao/addpatient.jsp" target="mainFrame"
+							class="a03">就诊卡办理</a>
 						</li>
 						<li><b class="tip"></b><a href="Guahao/message.jsp"
 							target="mainFrame" class="a03">信息查询</a>
@@ -44,8 +43,8 @@
 				<div>
 					<a class="one">病历管理</a>
 					<ul class="kid">
-						<li><b class="tip"></b><a href="disease/diseaseInfo.jsp" target="mainFrame"
-							class="a03">病历编号与信息</a>
+						<li><b class="tip"></b><a href="disease/patientsInfoInsert.jsp" target="mainFrame"
+							class="a03">病人诊断信息录入</a>
 						</li>
 						<li><b class="tip"></b><a
 							href="disease/patientsList.jsp" target="mainFrame"
@@ -98,7 +97,7 @@
 						<li><b class="tip"></b><a href="UserinfosServlet?method=userFindAll"
 							target="mainFrame" class="a03">用户操作</a>
 						</li>
-						<li><b class="tip"></b><a href="User/userAdd.jsp"
+						<li><b class="tip"></b><a href="UserinfosServlet?method=userAdd1"
 							target="mainFrame" class="a03">添加新用户</a>                              
 						</li>
                     

@@ -3,6 +3,7 @@ package com.azeroth.daoimpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,7 +126,7 @@ public class UserinfosDaoimpl implements UserinfosDao {
 	
 		try {
 			
-			String sql = "select * from t_userinfos where u_id=? and u_pwd=?";
+			String sql = "select * from t_userinfos u,t_section s where u.u_id=? and u.u_pwd=?";
 			Object[] obj = {u_id,u_pwd};
 			ResultSet rs = DBHelper.getRs(sql, obj);
 			if(rs.next()) {
@@ -140,7 +141,11 @@ public class UserinfosDaoimpl implements UserinfosDao {
 				int u_taskstate = rs.getInt("u_taskstate");
 				String u_email = rs.getString("u_email");
 				String u_exp = rs.getString("u_exp");
+				String s_name = rs.getString("s_name");
+				Section section = new Section();
+				section.setS_name(s_name);
 				Userinfos userinfos = new Userinfos(u_id,s_id,pr_id,u_pwd,u_name,u_title,u_age,u_sex,u_tel,u_taskstate,u_email,u_exp);
+				userinfos.setSection(section);
 				return userinfos;
 			}
 			
@@ -281,6 +286,39 @@ public class UserinfosDaoimpl implements UserinfosDao {
 		}
 		return null;
 	
+	}
+	
+	public List<Userinfos> userFindDoctorbysid(int s_id) {
+		//u_id  s_id  pr_id u_pwd u_name u_titl u_age u_sex u_te u_taskstate u_email u_exp
+		String sql="select * from t_userinfos where s_id=?";
+		Object[] obj = {s_id};
+		ResultSet rs= DBHelper.getRs(sql, obj);
+		List<Userinfos> samesecdocList =new ArrayList<Userinfos>();
+		Section section = new SectionDaoimpl().sectionFindBySid(s_id);
+		try {
+			while(rs.next()) {
+				String u_id=rs.getString("u_id");
+				String pr_id=rs.getString("pr_id");
+				String u_pwd=rs.getString("u_pwd");
+				String u_name=rs.getString("u_name");
+				int u_title=rs.getInt("u_title");
+				int u_age =rs.getInt("u_age");
+				String u_sex= rs.getString("u_sex");
+				String u_tel=rs.getString("u_tel");
+				int u_taskstate=rs.getInt("u_taskstate");
+				String u_email=rs.getString("u_email");
+				String u_exp=rs.getString("u_exp");
+				
+				Userinfos userinfos = new Userinfos(u_id,s_id,pr_id,u_pwd,u_name,u_title,u_age,u_sex,u_tel,u_taskstate,u_email,u_exp);
+				userinfos.setSection(section);
+				samesecdocList.add(userinfos);
+			}
+			return samesecdocList;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		    return null;
 	}
 	
 }

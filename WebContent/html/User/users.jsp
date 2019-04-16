@@ -53,6 +53,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td_top">用户年龄</td>
     <td class="td_top">所在科室</td>
     <td class="td_top">用户邮箱</td>
+    <td class="td_top">用户简述</td>
     <td class="td_top">操作</td>
    
    
@@ -67,7 +68,8 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07">${user.u_age}</td>
     <td class="td07">${user.section.s_name}</td>
     <td class="td07">${user.u_email}</td>
-    <td class="td07"><a href="UserinfosServlet?method=userDelete&u_id=${user.u_id}">删除</a>&nbsp&nbsp;<a href="UserinfosServlet?method=updatePwd1&u_id=${user.u_id}">修改密码</a></td>
+    <td class="td07">${user.u_exp}</td>
+    <td class="td07"><a href="UserinfosServlet?method=userDelete&u_id=${user.u_id}">删除</a>&nbsp;&nbsp;<a href="UserinfosServlet?method=updatePwd1&u_id=${user.u_id}">修改密码</a>&nbsp;&nbsp;<a href="UserinfosServlet?method=updateUser1&u_id=${user.u_id}">修改资料</a></td>
    
 
 

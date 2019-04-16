@@ -34,6 +34,11 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 </table>
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr> 
+
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="patientInfo.jsp" target="mainFrame" class="a14">病人信息查询</a></td>
+  </tr>
+  <tr> 
 
   <tr> 
 
