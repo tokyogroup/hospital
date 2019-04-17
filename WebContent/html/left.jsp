@@ -43,9 +43,7 @@
 				<div>
 					<a class="one">病历管理</a>
 					<ul class="kid">
-						<li><b class="tip"></b><a href="disease/patientsInfoInsert.jsp" target="mainFrame"
-							class="a03">病人诊断信息录入</a>
-						</li>
+						
 						<li><b class="tip"></b><a
 							href="disease/patientsList.jsp" target="mainFrame"
 							class="a03">病人诊断信息管理</a>
@@ -69,9 +67,7 @@
 				<div>
 					<a class="one">划价管理</a>
 					<ul class="kid">
-						<li><b class="tip"></b><a
-							href="PriceManage/yaoList.jsp" target="mainFrame"
-							class="a03">药品管理</a>
+						
 						
 							<li><b class="tip"></b><a
 							href="PriceManage/charge.jsp" target="mainFrame"
@@ -81,11 +77,11 @@
 				</div>
                 
 				<div>
-					<a class="one">角色与权限分配</a>
+					<a class="one">药品管理</a>
 					<ul class="kid">					
-						<li><b class="tip"></b>
-							<a href="Popedom/popedomAttribute.jsp"  target="mainFrame">角色与权限分配</a>
-						</li>
+						<li><b class="tip"></b><a
+							href="PriceManage/yaoList.jsp" target="mainFrame"
+							class="a03">药品管理</a>
 					</ul>
 			
 				

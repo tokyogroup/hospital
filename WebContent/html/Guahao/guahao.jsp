@@ -5,15 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
-<script src="../../jquery/jquery-1.9.1.js"></script>
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
+<script src="${pageContext.request.contextPath}/jquery/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 $(function(){
-$("#btn1").click(function(){
-		$.post("../../PatientsServlet",{method:"queryPatientsbyid",pi_id:$("#pi_id").val()},function(data){
-			
+	
+      $("#btn1").click(function(){
+    	 
+    	  $.getJSON("../../html/PatientsServlet",{method:"queryPatientsbyid",pi_id:$("#pi_id").val()},function(patients){
+    	  $("#pi_sex").html(patients.pi_sex);
+    	  $("#pi_name").html(patients.pi_name);
+    	  $("#pi_tele").html(patients.pi_tele);
 		})
-	})
+	        })
 	/* 
 	 $("#btn3").click(function(){
     	 $.getJSON("PersonServlet",{type:3},function(jsonobj){
@@ -24,18 +28,30 @@ $("#btn1").click(function(){
     	 })
      })
 	 */
+	   $("#choosetype").change(function(){
+		          var value= $(this).val();
+			       if(value=='1'){
+			           $('#rg_price').html("6.00");
+			           $('#rg_price').val("7.00");
+			       }else if(value=='2'){
+			           $('#rg_price').html("5.00");
+			           $('#rg_price').val("8.00");
+			       }else{
+			           $('#rg_price').html("10.00");
+			           $('#rg_price').val("9.00");
+			       }  
+	   })
+	   
+	   
 		$("#choosesec").change(function(){
-			$.getJSON("../../UserinfosServlet",{method:"querySamesecDoc",s_id:$(this).val()},function(jsonobj){
-
+			$.getJSON("../../html/UserinfosServlet",{method:"querySamesecDoc",s_id:$(this).val()},function(jsonobj){
 				 $("#doctor").empty();
-				 
 				 $.each(jsonobj,function(index,doctor){
-		    	 $("#doctor").append("<option>"+doctor.u_name+"</option>")  
+		    	 $("#doctor").append("<option value="+doctor.u_id+">"+doctor.u_name+"</option>") 
+		    	 $("#s_addr").html(doctor.section.s_addr);
 		       })
 			})
-		})
-		
-		
+		})	
 })
 </script>
 </head>
@@ -62,14 +78,14 @@ $("#btn1").click(function(){
         <td width="90" height="24" class="td_form01">就诊卡号</td>
         <td class="td_form02"><input name="pi_id" type="text" class="input" id="pi_id"><input type="button" id="btn1" value="查询"></td>
          <td width="90" class="td_form01">病人性别</td>
-        <td class="td_form02" name="pi_sex">${patients.pi_sex} </td>  
+        <td class="td_form02" ><span id="pi_sex" name="pi_sex"></span></td>  
       </tr>
       
       <tr>
         <td width="90" height="24" class="td_form01">病人姓名</td>
-        <td class="td_form02" ><input type="text" name="pi_name"> </td>
+        <td class="td_form02" ><span id="pi_name" name="pi_name"></span></td>
          <td width="90" height="24" class="td_form01">联系电话</td>
-        <td class="td_form02"><input name="pi_tele" type="text" class="input"></td>
+        <td class="td_form02"><span id="pi_tele" name="pi_tele"></span></td>
       </tr>
       
        <tr>
@@ -79,54 +95,46 @@ $("#btn1").click(function(){
        <tr>  
         <td width="90" height="24" class="td_form01" >挂号类型</td>
         <td class="td_form02"><select name="re_type"id="choosetype" >
+              <option value="0">---请选择---</option>
               <option value="1">急诊</option>
               <option value="2">普通门诊</option>
               <option value="3">专家门诊</option></td>
-        <td width="90" height="24" class="td_form01">挂号编号</td>
-        <td class="td_form02"><input type="text" name=rg_id></td>   
-       </tr>
+        <td width="90" height="24" class="td_form01">操作人员</td>
+        <td class="td_form02"><span > ${userinfos.u_name} </span></td>  
        <tr>
         <td width="90" class="td_form01">科室名称</td>
         <td class="td_form02">
-          <select name="choosesec"id="choosesec">
+          <select name="s_id" id="choosesec" >
+          <option>---请选择---</option>
           <c:choose>
           <c:when test="${empty sectionList}">empty list!!!</c:when>
           <c:otherwise>
           <c:forEach var="section" items="${sectionList}">
-            <option value= ${section.s_id}> ${section.s_name} </option>
+            <option value=${section.s_id}> ${section.s_name} </option>
           </c:forEach>
           </c:otherwise>
           </c:choose>
           </select>
          </td>
-         <td width="90" height="24" class="td_form01">挂号日期</td>
-         <td class="td_form02"><input type="text" name="rg_date"></td>
+          <td width="90" height="24" class="td_form01">就诊地点</td>
+          <td class="td_form02"><span id="s_addr" name="addr"></span></td>
       </tr>
       
         <tr>                 
         <td width="90" class="td_form01">医生姓名</td>  
         <td class="td_form02">
-            <select id="doctor">
-            <c:choose>
-            <c:when test="${empty sameSecdocList}">empty list!!!!</c:when>
-            <c:otherwise>
-            <c:forEach var="doctor" items="${sameSecdocList}">
-            <option > ${doctor.u_name} </option>
-            </c:forEach>
-            </c:otherwise>
-            </c:choose>
+            <select id="doctor" name="d_id" >
+          
             </select>
         </td> 
-          <td width="90" height="24" class="td_form01">就诊地点</td>
-          <td class="td_form02"></td>
+            
+        <td width="90" height="24" class="td_form01">挂号费用</td>
+        <td class="td_form02"><input type="text"  name="rg_price" id="rg_price">元</td>
+        
+    
       </tr>  
       
-        <tr>       
-        <td width="90" height="24" class="td_form01">挂号费用</td>
-        <td class="td_form02"><input type="text" name=rg_price></td>
-         <td width="90" height="24" class="td_form01">操作人员</td>
-        <td class="td_form02"><input type="text" name="u_id"></td>  
-      </tr>     
+          
     </table>
     <br>
     <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">

@@ -1,8 +1,13 @@
 package com.azeroth.test;
 
+import java.util.List;
+
+import com.azeroth.bean.Medicine;
 import com.azeroth.bean.Userinfos;
+import com.azeroth.dao.MedicineDao;
 import com.azeroth.dao.PatientsDao;
 import com.azeroth.dao.UserinfosDao;
+import com.azeroth.daoimpl.MedicineDaoimpl;
 import com.azeroth.daoimpl.PatientsDaoimpl;
 import com.azeroth.daoimpl.UserinfosDaoimpl;
 
@@ -21,11 +26,9 @@ public class test {
                String newStr = "UU"+String.format("%04d",i); 
   System.out.println(newStr); 
       } */
-		
-		
-		
-		PatientsDao p = new PatientsDaoimpl();
-		System.out.println(p.findById("uu123").getPi_sex());
+		MedicineDao medicineDao = new  MedicineDaoimpl();
+		List<Medicine> medicineList = medicineDao.findAll("蓝");
+		System.out.println(medicineList.get(0).getM_name());
 		
 		
 	}

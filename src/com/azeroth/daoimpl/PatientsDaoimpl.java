@@ -16,7 +16,7 @@ public class PatientsDaoimpl implements PatientsDao{
 	public void  addPatient(Patients pa) {
 		Connection conn = DBHelper.getConn();
 		PreparedStatement ps = null;
-		String sql = "insert into t_patients(pi_id,pi_name,pi_sex,pi_age) values (?,?,?,?)";
+		String sql = "insert into t_patients values (?,?,?,?,?,?,?)";
 		
 		try {
 			//执行sql语句
@@ -28,6 +28,10 @@ public class PatientsDaoimpl implements PatientsDao{
 			ps.setString(2, pa.getPi_name());
 			ps.setString(3, pa.getPi_sex());
 			ps.setInt(4, pa.getPi_age());
+			ps.setString(5, pa.getPi_date());
+			ps.setString(6, pa.getPi_tele());
+			ps.setString(7, pa.getPi_addr());
+			
 			int num = ps.executeUpdate();
 			if(num>0) {
 				System.out.println("添加成功！");
@@ -116,7 +120,10 @@ public class PatientsDaoimpl implements PatientsDao{
 				String pi_name=rs.getString("pi_name");
 				String pi_sex=rs.getString("pi_sex");
 				int pi_age=rs.getInt("pi_age");
-				Patients patients = new Patients(pi_id, pi_name, pi_sex, pi_age);
+				String pi_date= rs.getString("pi_date");
+				String pi_tele = rs.getString("pi_date");
+				String pi_addr = rs.getString("pi_addr");
+				Patients patients = new Patients(pi_id, pi_name, pi_sex, pi_age, pi_date, pi_tele, pi_addr);
 				pList.add(patients);
 				
 			}
@@ -145,11 +152,14 @@ public class PatientsDaoimpl implements PatientsDao{
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
-				String pid=rs.getString("pi_id");
-				String pname=rs.getString("pi_name");
-				String psex=rs.getString("pi_sex");
-				int page=rs.getInt("pi_age");
-				Patients patients = new Patients(pid,pname,psex,page);
+				String pi_id=rs.getString("pi_id");
+				String pi_name=rs.getString("pi_name");
+				String pi_sex=rs.getString("pi_sex");
+				int pi_age=rs.getInt("pi_age");
+				String pi_date= rs.getString("pi_date");
+				String pi_tele = rs.getString("pi_date");
+				String pi_addr = rs.getString("pi_addr");
+				Patients patients = new Patients(pi_id, pi_name, pi_sex, pi_age, pi_date, pi_tele, pi_addr);
 				pList.add(patients);
 			}
 			
@@ -177,10 +187,13 @@ public class PatientsDaoimpl implements PatientsDao{
 		
 		if(rs.next()) {
 			String pid=rs.getString("pi_id");
-			String pname=rs.getString("pi_name");
-			String psex=rs.getString("pi_sex");
-			int page=rs.getInt("pi_age");
-			Patients patients = new Patients(pid,pname,psex,page);
+			String pi_name=rs.getString("pi_name");
+			String pi_sex=rs.getString("pi_sex");
+			int pi_age=rs.getInt("pi_age");
+			String pi_date= rs.getString("pi_date");
+			String pi_tele = rs.getString("pi_date");
+			String pi_addr = rs.getString("pi_addr");
+			Patients patients =new Patients(pi_id, pi_name, pi_sex, pi_age, pi_date, pi_tele, pi_addr);
 			return patients;
 		}
 		

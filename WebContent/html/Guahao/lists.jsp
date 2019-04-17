@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>挂号服务</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/clientSideApp.js"></script>
 <SCRIPT language=JavaScript type=text/JavaScript>
 function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left) 
@@ -40,7 +40,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
  
   <tr> 
   
-   <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="info.jsp" target="mainFrame" class="a14">挂号信息及管理</a></td>
+   <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="../../RegistrationServlet?method=QueryRegistration" target="mainFrame" class="a14">挂号信息及管理</a></td>
   </tr>
   <tr> 
 </table>

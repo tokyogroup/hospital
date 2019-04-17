@@ -14,4 +14,6 @@ public interface RegistrationDao {
 	public boolean updateRegistration(String rg_id);
 	//删除退号
 	public boolean delRegistration(String rg_id);
+	//修改挂号状态
+	public boolean updateStatusRegistration(String rg_id);
 }

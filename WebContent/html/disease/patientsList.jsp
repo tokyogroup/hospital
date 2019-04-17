@@ -33,6 +33,11 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
 
+
+ <tr> 
+
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="  rgUpdateStatus.jsp" target="mainFrame" class="a14">确认挂号</a></td>
+  </tr>
   <tr> 
 
     <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="   patientsInfoInsert.jsp" target="mainFrame" class="a14">病人诊断信息录入</a></td>
@@ -40,7 +45,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
  
   <tr> 
   
-   <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href=" diseaseBrowse.jsp" target="mainFrame" class="a14">病人诊断信息查询</a></td>
+   <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href=" caseFind.jsp" target="mainFrame" class="a14">病人诊断信息查询</a></td>
   </tr>
   <tr> 
 </table>

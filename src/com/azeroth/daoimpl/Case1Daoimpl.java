@@ -10,6 +10,7 @@ import com.azeroth.bean.Section;
 import com.azeroth.bean.Userinfos;
 import com.azeroth.dao.Case1Dao;
 import com.azeroth.dao.PatientsDao;
+import com.azeroth.dao.UserinfosDao;
 import com.azeroth.utils.DBHelper;
 
 public class Case1Daoimpl implements Case1Dao {
@@ -58,7 +59,7 @@ public class Case1Daoimpl implements Case1Dao {
 		
 		try {
 			
-			String sql = "select * from t_case where pi_id=?";
+			String sql = "select * from t_case where pi_id=? order by c_date desc";
 			Object[] obj = {pi_id};
 			ResultSet rs = DBHelper.getRs(sql, obj);
 			List<Case1> case1List = new ArrayList<Case1>();
@@ -136,12 +137,14 @@ public class Case1Daoimpl implements Case1Dao {
 	@Override
 	public Case1 case1FindByCid(String c_id) {
 		try {
-			
+			PatientsDao patientsDao = new PatientsDaoimpl();
+			UserinfosDao userinfosDao = new UserinfosDaoimpl();
 			String sql = "select * from t_case where c_id=?";
 			Object[] obj = {c_id};
 			ResultSet rs = DBHelper.getRs(sql, obj);
 	
 			while(rs.next()) {
+				
 				String pi_id = rs.getString("pi_id");
 				String u_id = rs.getString("u_id");
 				String c_date = rs.getString("c_date");
@@ -151,15 +154,14 @@ public class Case1Daoimpl implements Case1Dao {
 				Case1 case1 = new Case1();
 				case1.setC_date(c_date);
 				case1.setC_id(c_id);
-				Patients patients = new Patients();
-				patients.setPi_id(pi_id);
+				Patients patients = patientsDao.findById(pi_id);
 				case1.setPatients(patients);
-				Userinfos userinfos = new Userinfos();
-				userinfos.setU_id(u_id);
+				Userinfos userinfos = userinfosDao.userFindByUid(u_id);
+				
 				case1.setUserinfos(userinfos);
 				case1.setC_result(c_result);
 				case1.setC_method(c_method);
-				case1.setC_status(c_status);	
+				case1.setC_status(c_status);		
 				return case1;
 			}
 			

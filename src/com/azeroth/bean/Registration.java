@@ -4,7 +4,7 @@ public class Registration {
 	//registr表字段rg_id pi_id u_id u_id2 rg_price rg_date  rg_status
 
 	private String rg_id;	     //挂号编号 
-	private String pi_id;	     //就诊号
+	private Patients patients;	     //就诊号
 	private String u_id;         //门诊人员编号
 	private Userinfos userinfos;        //医生编号       
 	private double rg_price;     //挂号费   
@@ -16,11 +16,11 @@ public class Registration {
 	public void setRg_id(String rg_id) {
 		this.rg_id = rg_id;
 	}
-	public String getPi_id() {
-		return pi_id;
+	public Patients getPatients() {
+		return patients;
 	}
-	public void setPi_id(String pi_id) {
-		this.pi_id = pi_id;
+	public void setPatients(Patients patients) {
+		this.patients = patients;
 	}
 	public String getU_id() {
 		return u_id;
@@ -52,11 +52,11 @@ public class Registration {
 	public void setRg_status(int rg_status) {
 		this.rg_status = rg_status;
 	}
-	public Registration(String rg_id, String pi_id, String u_id, Userinfos userinfos, double rg_price, String rg_date,
-			int rg_status) {
+	public Registration(String rg_id, Patients patients, String u_id, Userinfos userinfos, double rg_price,
+			String rg_date, int rg_status) {
 		super();
 		this.rg_id = rg_id;
-		this.pi_id = pi_id;
+		this.patients = patients;
 		this.u_id = u_id;
 		this.userinfos = userinfos;
 		this.rg_price = rg_price;

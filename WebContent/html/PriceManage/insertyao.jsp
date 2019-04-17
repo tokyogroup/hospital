@@ -32,49 +32,44 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
+<form method="post" action="${pageContext.request.contextPath}/html/MedicineServlet?method=medicineAdd">
 
-
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-   <tr>
-         <td height="24" class="td_form01">药品编号</td>
-     <td class="td_form02"><input name="textfield24" type="text" class="input" value="1002"></td>   
-   </tr>	
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">	
       <tr>
         <td height="24" class="td_form01">药品名称</td>
-        <td class="td_form02"><input name="textfield24" type="text" class="input" value="感冒灵"></td>  
+        <td class="td_form02"><input name="m_name" type="text" class="input" value=""></td>  
    </tr>	
       <tr>
         <td height="24" class="td_form01">药品规格</td>
-          <td class="td_form02"><input name="textfield24" type="text" class="input" value="12粒/片"></td>
+          <td class="td_form02"><input name="m_spec" type="text" class="input" value=""></td>
    </tr>	
       <tr>
          <td height="24" class="td_form01">药品单价</td>
-        <td class="td_form02"><input name="textfield24" type="text" class="input" value="15.0"></td>
+        <td class="td_form02"><input name="m_price" type="text" class="input" value=""></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">药品功能</td>
-         <td class="td_form02"><input name="textfield24" type="text" class="input" value="主治感冒、发烧   "></td>
+         <td class="td_form02"><input name="m_funciton" type="text" class="input" value=" "></td>
    </tr>	
       <tr>
-         <td height="24" class="td_form01">有效期</td>
-         <td class="td_form02"><input name="textfield24" type="text" class="input" value="三年"></td>
+         <td height="24" class="td_form01">生产厂家</td>
+         <td class="td_form02"><input name="m_addr" type="text" class="input" value=""></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">药品库存</td>
-       <td class="td_form02"><input name="textfield24" type="text" class="input" value="1200盒"></td>
+       <td class="td_form02"><input name="m_count" type="text" class="input" value=""></td>
    </tr>	
-   </tr>	
-    </tr>	  
+     
 </table>
 
 
   <table align="center">
        <tr>
         <td >
-          <input name=save  type=button class=buttonface value= '  提交  '  onclick="   ">        
-        <input name="Submit" type="submit" class="buttonface" value="  重置  " ></td>
+          <input name=save  type=submit class=buttonface value= '  提交  '  onclick="   ">        
+        <input name="Submit" type="button" class="buttonface" value="  重置  " ></td>
       </tr>
    </table>
-
+</form>
 </body>
 </html>

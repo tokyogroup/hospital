@@ -159,13 +159,14 @@ public class UserinfosDaoimpl implements UserinfosDao {
 	@Override
 	public Userinfos userFindByUid(String u_id) {		
 		try {
-			
+			SectionDaoimpl secitonDao = new SectionDaoimpl();
 			String sql = "select * from t_userinfos where u_id=?";
 			Object[] obj = {u_id};
 			ResultSet rs = DBHelper.getRs(sql, obj);
 			if(rs.next()) {
 
 				int s_id = rs.getInt("s_id");
+				Section section = secitonDao.sectionFindBySid(s_id);
 				String pr_id = rs.getString("pr_id");
 				String u_name = rs.getString("u_name");
 				String u_pwd = rs.getString("u_pwd");
@@ -177,6 +178,7 @@ public class UserinfosDaoimpl implements UserinfosDao {
 				String u_email = rs.getString("u_email");
 				String u_exp = rs.getString("u_exp");
 				Userinfos userinfos = new Userinfos(u_id,s_id,pr_id,u_pwd,u_name,u_title,u_age,u_sex,u_tel,u_taskstate,u_email,u_exp);
+				userinfos.setSection(section);
 				return userinfos;
 			}
 			

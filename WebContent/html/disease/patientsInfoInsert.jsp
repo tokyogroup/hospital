@@ -6,12 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>病人诊断信息录入</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../../jquery/jquery-1.9.1.js"></script>
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#pi_id").blur(function(){
-		$.getJSON("../Case1Servlet?",{method:"piidCheck",pi_id:$("#pi_id").val()},function(data){
+		$.getJSON("../Case1Servlet",{method:"piidCheck",pi_id:$("#pi_id").val()},function(data){
 			if(data=="1"){
 				alert("诊号错误,请重新确认");
 			}else{
@@ -49,7 +49,7 @@ $(function(){
       </table></td>
     </tr>
   </table>
-  <form name="form1" method="post" action="../Case1Servlet?method=case1Add">
+  <form name="form1" method="post" action="../Case1Servlet?method=case1Add2">
     <table width="95%" border="0" cellspacing="0" cellpadding="0">
       <tr>
        	
@@ -83,7 +83,7 @@ $(function(){
         <tr align="left" nowrap>
         <td height="24" align="center"  class=td_form01>诊断结果：</td>
         <td height="24" colspan="5" align="left" valign="middle"  class=td_form01><label>
-          <textarea name="c_result" id=""c_result"" cols="100" rows="5" required="required"></textarea>
+          <textarea name="c_result" id="c_result" cols="100" rows="5" required="required"></textarea>
         </label></td>
 
       </tr>  
