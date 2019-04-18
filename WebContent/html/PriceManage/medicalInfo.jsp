@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>查询结果</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/check.js"></script>
 <script language="javascript" src="../../js/checkAll.js"></script>
 <script language="javascript" src="../../js/clientSideApp.js"></script>
@@ -35,15 +36,17 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
+<form action="..//html/MedicineServlet?method=medicineFind" method="post">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td class="td_page">输入药品编号：
-    <input name="PARA_YM_NOW" size="20" type="text" class="input"   id="PARA_YM_NOW" next="A001014" value="xy0012" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" >
-          药品名称：<input name="PARA_YM_NOW2" size="20" type="text" class="input" id="PARA_YM_NOW2" next="A001014" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)">
-    <input name="chaxun" type="button" class="buttonface" value=" 查询 ">
+    <input  size="20" type="text" class="input"   name="m_id"  >
+          药品名称：<input  size="20" type="text" class="input" id="PARA_YM_NOW2" name="m_name">
+    <input name="chaxun" type="submit" class="buttonface" value=" 查询 ">
 </td>
   </tr>
 </table>
+</form>
 <br>
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
   <tr>
@@ -52,64 +55,27 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td_top">药品规格</td>
     <td class="td_top">药品单价</td>
     <td class="td_top">药品功能</td>
-    <td class="td_top">有效期</td>
+    <td class="td_top">生产厂家</td>
     <td class="td_top">库存</td>
     <td nowrap class="td_top">操作</td>
 
   </tr>
+  <c:forEach var="me" items="${meList}">
   <tr>
-    <td class="td07">xy0012</td>
-    <td class="td07">感冒灵</td>
-    <td class="td07">12粒/片<br>2片/盒</td>
-    <td class="td07">15.0</td>
-    <td class="td07">主治感冒、发烧</td>
-    <td class="td07">3年</td>
-    <td class="td07">1200盒</td>
+    <td class="td07">${me.m_id }</td>
+    <td class="td07">${me.m_name }</td>
+    <td class="td07">${me.m_spec }</td>
+    <td class="td07">${me.m_price }</td>
+    <td class="td07">${me.m_function }</td>
+    <td class="td07">${me.m_addr }</td>
+    <td class="td07">${me.m_count }</td>
     <td class="td07">
-                     <a href="yaoModify.jsp" target="mainFrame">修改</a>&nbsp;&nbsp;
-                     <a href="medicalInfoList.jsp" target="mainFrame">删除</a></td>
+                     <a href="${pageContext.request.contextPath}/MedicineServlet?method=updateMe&m_id=${me.m_id}" target="mainFrame">修改</a>&nbsp;&nbsp;
+                     <a href="${pageContext.request.contextPath}/MedicineServlet?method=delMe&m_id=${me.m_id}" target="mainFrame">删除</a></td>
 
   </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-    <td class="td07">&nbsp;</td>
-  </tr>
+  </c:forEach>
+  
 </table>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>

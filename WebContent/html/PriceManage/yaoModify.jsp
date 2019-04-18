@@ -3,9 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>修改药品</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>添加药品</title>
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <SCRIPT language=JavaScript type=text/JavaScript>
 function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left) 
 {
@@ -32,49 +32,49 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
+<form method="post" action="${pageContext.request.contextPath}/MedicineServlet?method=updateMe1">
 
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">	
 
-<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
-   <tr>
-         <td height="24" class="td_form01">药品编号</td>
-     <td class="td_form02"><input name="textfield24" type="text" class="input" value="1002"></td>   
-   </tr>	
+ <tr>
+        <td height="24" class="td_form01">药品编号</td>
+        <td class="td_form02"><input name="m_id" type="text" class="input" value="${medicine.m_id}" readonly="readonly"></td>  
+   </tr>
       <tr>
         <td height="24" class="td_form01">药品名称</td>
-        <td class="td_form02"><input name="textfield24" type="text" class="input" value="感冒灵"></td>  
+        <td class="td_form02"><input name="m_name" type="text" class="input" value="${medicine.m_name}"></td>  
    </tr>	
       <tr>
         <td height="24" class="td_form01">药品规格</td>
-          <td class="td_form02"><input name="textfield24" type="text" class="input" value="12粒/片"></td>
+          <td class="td_form02"><input name="m_spec" type="text" class="input" value="${medicine.m_spec}"></td>
    </tr>	
       <tr>
          <td height="24" class="td_form01">药品单价</td>
-        <td class="td_form02"><input name="textfield24" type="text" class="input" value="15.0"></td>
+        <td class="td_form02"><input name="m_price" type="text" class="input" value="${medicine.m_price}"></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">药品功能</td>
-         <td class="td_form02"><input name="textfield24" type="text" class="input" value="主治感冒、发烧   "></td>
+         <td class="td_form02"><input name="m_funciton" type="text" class="input" value="${medicine.m_function} "></td>
    </tr>	
       <tr>
-         <td height="24" class="td_form01">有效期</td>
-         <td class="td_form02"><input name="textfield24" type="text" class="input" value="三年"></td>
+         <td height="24" class="td_form01">生产厂家</td>
+         <td class="td_form02"><input name="m_addr" type="text" class="input" value="${medicine.m_name}"></td>
    </tr>	
       <tr>
         <td height="24" class="td_form01">药品库存</td>
-       <td class="td_form02"><input name="textfield24" type="text" class="input" value="1200盒"></td>
+       <td class="td_form02"><input name="m_count" type="text" class="input" value="${medicine.m_count}"></td>
    </tr>	
-   </tr>	
-    </tr>	  
+     
 </table>
 
 
   <table align="center">
        <tr>
         <td >
-          <input name=save  type=button class=buttonface value= '  提交  '  onclick="   ">        
-        <input name="Submit" type="submit" class="buttonface" value="  重置  " ></td>
+          <input name=save  type=submit class=buttonface value= '  提交  '  onclick="   ">        
+        <input name="Submit" type="button" class="buttonface" value="  重置  " ></td>
       </tr>
    </table>
-
+</form>
 </body>
 </html>

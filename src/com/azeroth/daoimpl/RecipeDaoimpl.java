@@ -55,6 +55,52 @@ public class RecipeDaoimpl implements RecipeDao {
 		return null;
 	}
 
+	@Override
+	public boolean recipeDel(String rc_id) {
+		
+
+		try {
+			String sql  = "delete from t_recipe where rc_id=?";
+			Object[] obj = {rc_id};
+			boolean rs = DBHelper.runSql(sql, obj);
+			
+			if(rs) {
+				return true;
+			}
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+
+	@Override
+	public Recipe findByReid(String rc_id) {
+		try {
+			String sql  = "select * from t_recipe where rc_id=?";
+			Object[] obj = {rc_id};
+			ResultSet rs = DBHelper.getRs(sql, obj);
+			
+			MedicineDao medDao = new MedicineDaoimpl();
+			Case1 case1 = new Case1();
+			while(rs.next()) {
+				String c_id = rs.getString("c_id");
+				String m_id = rs.getString("m_id");
+				int rc_count = rs.getInt("rc_count");
+				Medicine medicine = medDao.findbyMid(m_id);
+				case1.setC_id(c_id);
+				Recipe recipe = new Recipe(rc_id,medicine,rc_count,case1);
+				return recipe;
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	
 	
 	

@@ -17,4 +17,5 @@ public interface MedicineDao {
 	public List<Medicine> findAll(String name);
 	public Medicine findbyMid(String m_id);
 	public void updateCount(String m_id, int rc_count);
+	public List<Medicine> find(String condition);
 }

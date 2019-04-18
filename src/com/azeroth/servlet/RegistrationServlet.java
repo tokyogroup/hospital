@@ -47,8 +47,9 @@ public class RegistrationServlet extends BaseServlet {
     		System.out.print(condition);
     		List<Registration> registrationList= registrationDaoImpl.queryRigistration(condition);
     		req.getSession().setAttribute("registrationList", registrationList);
-    		return"html/Guahao/info.jsp";
+    		return"/html/Guahao/info.jsp";
     	}
+    	
         public String addRegistration(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     		System.out.println("-----addmethod----");
         	UserinfosDao userDaoImpl = new UserinfosDaoimpl();

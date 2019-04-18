@@ -171,4 +171,28 @@ public class Case1Daoimpl implements Case1Dao {
 		return null;
 	}
 
+	@Override
+	public void updateStatus(String cid) {
+
+
+		try {
+			String sql = "update t_case set c_status=1 where c_id=?";			
+			Object[] obj = {cid};
+			boolean rs =DBHelper.runSql(sql, obj);
+			if(rs) {
+				System.out.println("病例修改状态成功");
+		
+			}else {
+				System.out.println("病例修改状态失败");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	
+		
+	
+	}
+
 }

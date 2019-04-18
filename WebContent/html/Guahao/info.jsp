@@ -94,8 +94,8 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td07">${registration.userinfos.u_name}</td>
     <td class="td07">${registration.rg_status}</td>
     <td class="td07">
-        <a href="guahaoEdit.jsp" target="mainFrame">&nbsp;&nbsp;详情</a>
-        <a href="guahaoModify.jsp"  target="mainFrame">&nbsp;&nbsp;修改</a>
+        <a href="${pageContext.request.contextPath}/html/Guahao/guahaoEdit.jsp" target="mainFrame">&nbsp;&nbsp;详情</a>
+        <a href="${pageContext.request.contextPath}/html/Guahao/guahaoModify.jsp"  target="mainFrame">&nbsp;&nbsp;修改</a>
         <a href="${pageContext.request.contextPath}/RegistrationServlet?method=delRegistration&rg_id=${registration.rg_id}" target="mainFrame">&nbsp;&nbsp;退号</a>
     </td>
   </tr>

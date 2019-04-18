@@ -27,10 +27,11 @@ $(function(){
 				}
 			});
 	}); 
-	 $("#out").click(function()
-	 {
-			window.location.href="patientsList.jsp";
-		});
+	$("#out").click(function(){
+		var data = $("#c_id").val();
+		window.location.href="../Case1Servlet?method=case1Detailed&c_id="+data;
+		
+	});
 	 
 	
 	
@@ -108,7 +109,7 @@ size="45"></td>
        <tr>
         <td >
           <input name=save  type=submit class=buttonface value= '  提交  ' >        
-        <input name="Submit"  id="out" type="button" class="buttonface" value="  退出  " ></td>
+        <input name="Submit"  id="out" type="button" class="buttonface" value="结束 " ></td>
       </tr>
    </table>
 

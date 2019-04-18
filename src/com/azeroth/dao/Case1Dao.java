@@ -10,6 +10,7 @@ public interface Case1Dao {
 	void case1Add(Case1 case1);//病例添加
 	void case1Update(Case1 case1);//修改病例 当病例状态为0 的时候
 	Case1 case1FindByCid(String c_id);//根据cid 查询病例
+	void updateStatus(String cid); //修改病例状态
 	
 	
 	

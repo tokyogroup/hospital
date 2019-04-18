@@ -32,7 +32,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
-<form method="post" action="${pageContext.request.contextPath}/html/MedicineServlet?method=medicineAdd">
+<form method="post" action="${pageContext.request.contextPath}/MedicineServlet?method=medicineAdd">
 
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">	
       <tr>

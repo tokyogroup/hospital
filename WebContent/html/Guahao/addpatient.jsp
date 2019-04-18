@@ -18,7 +18,7 @@
       </table></td>
     </tr>
   </table>
-  <form name="form1" method="post" action="${pageContext.request.contextPath}/html/PatientsServlet?method=addPatient">
+  <form name="form1" method="post" action="${pageContext.request.contextPath}/PatientsServlet?method=addPatient">
     <table width="95%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="90" height="24" class="td_form01">就诊卡号</td>

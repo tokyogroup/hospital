@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>查看病人信息</title>
-<link href="../../css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css">
 <script language="javascript" src="../../js/check.js"></script>
 <script language="javascript" src="../../js/checkAll.js"></script>
 <script language="javascript" src="../../js/clientSideApp.js"></script>
+<script src="${pageContext.request.contextPath}/jquery/jquery-1.9.1.js"></script>
+
 <SCRIPT language=JavaScript type=text/JavaScript>
 function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left) 
 {
@@ -33,16 +36,18 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
+<form action="${pageContext.request.contextPath}/PatientsServlet?method=queryPatients" method="post">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td class="td_page">输入就诊卡号：
-    <input name="PARA_YM_NOW" size="10" type="text" class="input"   id="PARA_YM_NOW" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW')"> -->
-病人姓名：<input name="PARA_YM_NOW2" size="10" type="text" class="input"   id="PARA_YM_NOW2" next="A001014" alt="查询年月|0|d|||" value="" onFocus="{obtainFocus(this),this.select()}" onKeyPress="gotoNextInput(this)" onBlur="matchInput(this)" readonly><!--<input type="button"  class="button_select" onClick="fPopUpCalendarDlg('PARA_YM_NOW2')"> -->
+    <input name="pi_id" type="text">
+病人姓名：<input name="pi_name" type="text">
+<input name="" type="submit" class="buttonface" value=" 查询 "></td>
 
-<input name="Submit" type="submit" class="buttonface" value=" 查询 "></td>
   </tr>
 </table>
 <br>
+
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01">
   <tr>
     <td class="td_top">就诊卡号</td>
@@ -51,22 +56,34 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
     <td class="td_top">病人年龄</td>
     <td class="td_top">手机号</td>
     <td class="td_top">居住地址</td>
+   <td nowrap class="td_top">操作</td>
    
 
   </tr>
+  <c:choose>
+  <c:when test="${empty patientsList}" >emptyList!!!!!!</c:when>
+  <c:otherwise>
+  <c:forEach var="patients" items="${patientsList}">
   <tr>
-    <td class="td07">1103</td>
-    <td class="td07">朱佳宝</td>
-    <td class="td07">女</td>
-    <td class="td07">20</td>
-    <td class="td07">110</td>
-    <td class="td07">广西</td>
-
-
+    <td class="td07"> ${patients.pi_id} </td>
+    <td class="td07">${patients.pi_name}</td>
+    <td class="td07">${patients.pi_sex}</td>
+    <td class="td07">${patients.pi_age}</td>
+    <td class="td07">${patients.pi_tele}</td>
+    <td class="td07">${patients.pi_addr}</td>
+      <td class="td07">
+        <a href="${pageContext.request.contextPath}/PatientsServlet?method=queryApatient&pi_id=${patients.pi_id}"  target="mainFrame">&nbsp;&nbsp;修改</a>
+        <a href="${pageContext.request.contextPath}/PatientsServlet?method=delPatients&pi_id=${patients.pi_id}" target="mainFrame">&nbsp;&nbsp;删除</a>
+    </td>
   </tr>
+  </c:forEach>
+  </c:otherwise>
+  </c:choose>
+ 
 
   
 </table>
+</form>
 <table width="95%"  border="0" cellpadding="0" cellspacing="0" class="table02" align="center">
   <tr>
     <td height="30" align="right"><img src="../../images/1.gif" width="4" height="5" align="absmiddle"> 首页　 <img src="../../images/2.gif" width="3" height="5" align="absmiddle"> 上一页　 <img src="../../images/2-2.gif" width="3" height="5" align="absmiddle"> 下一页　 <img src="../../images/3.gif" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>

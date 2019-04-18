@@ -14,16 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.azeroth.bean.Case1;
 import com.azeroth.bean.Medicine;
+import com.azeroth.bean.Order;
 import com.azeroth.bean.Patients;
 import com.azeroth.bean.Recipe;
 import com.azeroth.bean.Section;
 import com.azeroth.bean.Userinfos;
 import com.azeroth.dao.Case1Dao;
 import com.azeroth.dao.MedicineDao;
+import com.azeroth.dao.OrderDao;
 import com.azeroth.dao.PatientsDao;
 import com.azeroth.dao.RecipeDao;
 import com.azeroth.daoimpl.Case1Daoimpl;
 import com.azeroth.daoimpl.MedicineDaoimpl;
+import com.azeroth.daoimpl.OrderDaoimpl;
 import com.azeroth.daoimpl.PatientsDaoimpl;
 import com.azeroth.daoimpl.RecipeDaoimpl;
 import com.azeroth.daoimpl.RegistrationDaoImpl;
@@ -57,6 +60,8 @@ public class Case1Servlet extends BaseServlet {
 		String c_method = request.getParameter("c_method");
 		
 		String c_id = "c-"+UUIDUtil.getId();
+	
+		
 		Date date =  new Date();
 		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
 		String c_date = ft.format(date);
@@ -67,6 +72,16 @@ public class Case1Servlet extends BaseServlet {
 		Case1 case1 =new Case1(c_id,patients,userinfos,c_date,c_result,c_method,0);
 		Case1Dao case1Dao = new Case1Daoimpl();
 		case1Dao.case1Add(case1);
+		//生成订单号
+		String o_id ="o-"+UUIDUtil.getId();
+		Order order = new Order();
+		order.setCase1(case1);
+		order.setO_id(o_id);
+		order.setO_status(0);
+		OrderDao orderDao = new OrderDaoimpl();
+		orderDao.orderAdd(order);
+		
+	
 		request.getSession().setAttribute("case1", case1);
 		request.getRequestDispatcher("disease/recipe.jsp").forward(request, response);
 
@@ -117,8 +132,13 @@ public class Case1Servlet extends BaseServlet {
 		Case1 case1= case1Dao.case1FindByCid(c_id);
 		RecipeDao recipeDao = new RecipeDaoimpl();
 		List<Recipe> recipeList = recipeDao.recipeFindByCid(c_id);
+		if(recipeList.size()==0) {
+			request.getSession().setAttribute("recipe2List", null);
+		}else {
+			request.getSession().setAttribute("recipe2List", recipeList);
+		}
 		request.getSession().setAttribute("case1", case1);
-		request.getSession().setAttribute("recipe2List", recipeList);
+		
 		return "disease/patientInfo.jsp";
 	
 	

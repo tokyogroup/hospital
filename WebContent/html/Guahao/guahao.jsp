@@ -12,7 +12,7 @@ $(function(){
 	
       $("#btn1").click(function(){
     	 
-    	  $.getJSON("../../html/PatientsServlet",{method:"queryPatientsbyid",pi_id:$("#pi_id").val()},function(patients){
+    	  $.getJSON("${pageContext.request.contextPath}/PatientsServlet",{method:"queryPatientsbyid",pi_id:$("#pi_id").val()},function(patients){
     	  $("#pi_sex").html(patients.pi_sex);
     	  $("#pi_name").html(patients.pi_name);
     	  $("#pi_tele").html(patients.pi_tele);

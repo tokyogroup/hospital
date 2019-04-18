@@ -69,10 +69,13 @@
         <td height="24" colspan="5" align="left" valign="middle"  class=td_form01><label>
           <textarea name="c_method" id="c_method" cols="100" rows="5" readonly="readonly" >${case1.c_method }</textarea>
         </label></td>
-
+        
+<c:if test="${case1.c_status==0 }">
       </tr>  
-      
-       
+      <tr align="left" nowrap>
+      <td width="90" height="24" class="td_form01"><a href="${pageContext.request.contextPath}/html/disease/recipe.jsp"><b>新增处方</b></a></td>
+      </tr>
+       </c:if>  
     </table>
      
     <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="table01" id="td">
@@ -82,7 +85,8 @@
   <td class='td_top'>药品规格</td>
   <td class='td_top'>药品功能</td>
   <td class='td_top'>生产厂家</td>
-  <td class='td_top'>药品数量</td></tr>
+  <td class='td_top'>药品数量</td>
+  </tr>
  <c:choose>
  <c:when test="${empty recipe2List}">
  </c:when>
@@ -94,7 +98,10 @@
   <td class='td07'>${recipe2.medicine.m_spec }</td>
   <td class='td07'>${recipe2.medicine.m_function }</td>
   <td class='td07'>${recipe2.medicine.m_addr }</td>
-  <td class='td07'>${recipe2.rc_count }</td></tr>
+  <td class='td07'>${recipe2.rc_count }
+  <c:if test="${case1.c_status==0 }"><a href="${pageContext.request.contextPath}/html/RecipeServlet?method=recipeDel&rc_id=${recipe2.rc_id }&c_id=${case1.c_id}">删除</a>
+  </c:if>
+  </td></tr>
  
  </c:forEach>
  </c:otherwise>
