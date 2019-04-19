@@ -46,7 +46,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
   <tr> 
 
-    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="../MedicineServlet?method=medicineFindAll" target="mainFrame" class="a14">药品信息查询</a></td>
+    <td class="td_01"><img src="../../images/arrow_01.gif" width="14" height="14" align="absmiddle">&nbsp;&nbsp;&nbsp;<a href="../../MedicineServlet?method=medicineFindAll" target="mainFrame" class="a14">药品信息查询</a></td>
   </tr>
  
 </table>

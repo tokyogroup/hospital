@@ -36,7 +36,7 @@ function windowOpen(theURL,winName,features,width,hight,scrollbars,top,left)
   </tr>
 </table>
 <br>
-<form action="..//html/MedicineServlet?method=medicineFind" method="post">
+<form action="MedicineServlet?method=medicineFind" method="post">
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td class="td_page">输入药品编号：
