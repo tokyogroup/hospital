@@ -22,7 +22,7 @@
     <table width="95%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="90" height="24" class="td_form01">就诊卡号</td>
-        <td colspan="3" class="td_form02"><input name="pi_id" type="text" class="input"></td>
+        <td colspan="3" class="td_form02"><input name="pi_id" type="text" class="input"  readonly="readonly"></td>
       </tr>
       <tr>
         <td width="90" height="24" class="td_form01">病人姓名</td>

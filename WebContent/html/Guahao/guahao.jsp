@@ -9,6 +9,10 @@
 <script src="${pageContext.request.contextPath}/jquery/jquery-1.9.1.js"></script>
 <script type="text/javascript">
 $(function(){
+	 
+	window.setInterval("findCard();", 3000);
+	
+	
 	
       $("#btn1").click(function(){
     	 
@@ -53,6 +57,18 @@ $(function(){
 			})
 		})	
 })
+
+
+function findCard(){
+		
+	 $.getJSON("${pageContext.request.contextPath}/PatientsServlet",{method:"queryPatientsbyid"},function(patients){
+   	  
+		 $("#pi_id").html(patients.pi_id);
+		 $("#pi_sex").html(patients.pi_sex);
+   	  $("#pi_name").html(patients.pi_name);
+   	  $("#pi_tele").html(patients.pi_tele);
+		})
+	};
 </script>
 </head>
 
@@ -76,7 +92,7 @@ $(function(){
       
       <tr>
         <td width="90" height="24" class="td_form01">就诊卡号</td>
-        <td class="td_form02"><input name="pi_id" type="text" class="input" id="pi_id"><input type="button" id="btn1" value="查询"></td>
+        <td class="td_form02"><span id="pi_id" name="pi_id"></span><input type="button" id="btn1" value="查询"></td>
          <td width="90" class="td_form01">病人性别</td>
         <td class="td_form02" ><span id="pi_sex" name="pi_sex"></span></td>  
       </tr>

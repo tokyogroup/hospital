@@ -12,6 +12,13 @@ public class Patients {
 	public String getPi_id() {
 		return pi_id;
 	}
+	public Patients(String pi_id, String pi_name, String pi_sex, String pi_tele) {
+		super();
+		this.pi_id = pi_id;
+		this.pi_name = pi_name;
+		this.pi_sex = pi_sex;
+		this.pi_tele = pi_tele;
+	}
 	public void setPi_id(String pi_id) {
 		this.pi_id = pi_id;
 	}
