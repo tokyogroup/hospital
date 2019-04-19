@@ -39,7 +39,7 @@ public class UserinfosServlet extends BaseServlet {
 		String u_pwd = request.getParameter("u_pwd");
 		Userinfos userinfos = userinfosDao.userLogin(u_id, u_pwd);
 		if(userinfos==null) {
-			request.getSession().setAttribute("wrong", "账号或密码错误!");
+			request.setAttribute("wrong", "账号或密码错误!");
 			return "login.jsp";
 		}else {
 			request.getSession().setAttribute("userinfos", userinfos);

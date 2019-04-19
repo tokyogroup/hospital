@@ -71,6 +71,8 @@ $(function(){
     <td class="td_page">订单编号：
     <input name="o_id" size="10" type="text" class="input"  id="o_id" value="" >
 <input name="Submit" id="tijiao" type="button" class="buttonface" value=" 查询 "></td>
+ <td class="td_page" id="o_total"> 共计:</td>
+ <td class="td_page"><input type="button" value="确认收费" id="updateStatus"></td>
   </tr>
 </table>
 
@@ -92,8 +94,7 @@ $(function(){
     <td height="30" align="right"><img src="../../images/1.gif" width="4" height="5" align="absmiddle"> 首页　 <img src="../../images/2.gif" width="3" height="5" align="absmiddle"> 上一页　 <img src="../../images/2-2.gif" width="3" height="5" align="absmiddle"> 下一页　 <img src="../../images/3.gif" width="4" height="5" align="absmiddle"> 末页　　共 1 页 1 条记录</td>
   </tr>
 </table>
-<div id="o_total">共计:</div>
- <input type="button" value="确认收费" id="updateStatus">
+
 
 </body>
 </html>

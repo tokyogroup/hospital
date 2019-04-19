@@ -76,7 +76,7 @@ function changeVerifyCode(){
                 <td height="24" valign="bottom"><div align="right"><span class="STYLE3"></span></div></td>
                 <td width="10" valign="bottom">&nbsp;</td>
                 <td width="62" height="24" valign="bottom"><input type="text"   value="${wrong }" name="u_code" id="textfield3" style="width:100px; height:17px; background-color:#87adbf; border:solid 1px #153966; font-size:12px; color:#ff0000; "></td>
-                </div></td>
+            
               </tr>
 	</c:otherwise>
 	</c:choose>
